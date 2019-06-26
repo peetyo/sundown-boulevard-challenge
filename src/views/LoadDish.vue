@@ -5,12 +5,12 @@
     <b-container>
       <b-row>
         <b-col md="8">
-          <img v-bind:src="dish.strMealThumb" alt="dish image">
+          <img v-bind:src="dish.imageURL" alt="dish image">
           <div id="start-order" class="custom-card">
-            <h4>{{ dish.strMeal }}</h4>
-              <p>Unfortunately, this is a recipe and not the description of the dish. {{ dish.strInstructions | trimText }}</p>
+            <h4>{{ dish.name }}</h4>
+              <p>Unfortunately, this is a recipe and not the description of the dish. {{ dish.description | trimText }}</p>
             <div class="text-right">
-              <b-button href="#/load-dish" variant="primary">Generate New</b-button>
+              <b-button v-on:click="generateDish" variant="primary">Generate New</b-button>
             </div>
           </div>
         </b-col>
@@ -38,17 +38,29 @@ export default {
   },
   data() {
     return {
-      dish: {}
+      dish: {
+        id: "",
+        name: "",
+        description: "",
+        imageUrl: ""
+      }
     }
   },
   methods:{
     generateDish(){
       axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(res => 
-    this.dish = {...res.data.meals[0]}
+    // There's a lot of unnecessary data
+    // this.dish = {...res.data.meals[0]}
+    this.dish = { ...this.dish,
+      id: res.data.meals[0].idMeal,
+      name: res.data.meals[0].strMeal,
+      description: res.data.meals[0].strInstructions,
+      imageURL: res.data.meals[0].strMealThumb   
+    }
     // console.log(res.data.meals[0])
     )
-    .catch(err => console.log(err))
+    // .catch(err => console.log(err))
     }
   },
   filters: {

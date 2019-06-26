@@ -41,10 +41,10 @@ a.btn-primary:hover, button.btn-primary:hover{
     border-color: unset;
     opacity: var(--hover-opacity);
 }
-div.container{
+/* div.container{
   padding-left: 0;
   padding-right: 0;
-}
+} */
 div.row{
   margin-bottom: 20px;
 }
