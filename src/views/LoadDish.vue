@@ -5,10 +5,10 @@
     <b-container>
       <b-row>
         <b-col md="8">
-          <img src="../assets/sundown-boulevard.png" alt="dish image">
+          <img v-bind:src="dish.strMealThumb" alt="dish image">
           <div id="start-order" class="custom-card">
-            <h4>Dish Title</h4>
-              <p>Dish Description When you are ready go ahead and select your drinks.</p>
+            <h4>{{ dish.strMeal }}</h4>
+              <p>Unfortunately, this is a recipe and not the description of the dish. {{ dish.strInstructions | trimText }}</p>
             <div class="text-right">
               <b-button href="#/load-dish" variant="primary">Generate New</b-button>
             </div>
@@ -29,12 +29,39 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 
 export default {
   name: 'LoadDish',
   components: {
 
+  },
+  data() {
+    return {
+      dish: {}
+    }
+  },
+  methods:{
+    generateDish(){
+      axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(res => 
+    this.dish = {...res.data.meals[0]}
+    // console.log(res.data.meals[0])
+    )
+    .catch(err => console.log(err))
+    }
+  },
+  filters: {
+  trimText: function (text) {
+      if(text.length > 200){
+        return text.substring(0, 200)+'...';
+      }else{
+        return text;
+      }
+    }
+  }, 
+  created(){
+    this.generateDish();
   }
 }
 </script>
