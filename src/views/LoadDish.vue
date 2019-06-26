@@ -5,7 +5,7 @@
     <b-container>
       <b-row>
         <b-col md="8">
-          <img v-bind:src="dish.imageURL" alt="dish image">
+          <img v-bind:src="dish.imageUrl" alt="dish image">
           <div id="start-order" class="custom-card">
             <h4>{{ dish.name }}</h4>
               <p>Unfortunately, this is a recipe and not the description of the dish. {{ dish.description | trimText }}</p>
@@ -30,6 +30,7 @@
 
 <script>
 import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'LoadDish',
@@ -47,18 +48,21 @@ export default {
     }
   },
   methods:{
+    ...mapActions(['addDish']),
     generateDish(){
       axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
-    .then(res => 
-    // There's a lot of unnecessary data
-    // this.dish = {...res.data.meals[0]}
-    this.dish = { ...this.dish,
-      id: res.data.meals[0].idMeal,
-      name: res.data.meals[0].strMeal,
-      description: res.data.meals[0].strInstructions,
-      imageURL: res.data.meals[0].strMealThumb   
+    .then(res => {
+      // There's a lot of unnecessary data
+      // this.dish = {...res.data.meals[0]}
+      this.dish = { ...this.dish,
+        id: res.data.meals[0].idMeal,
+        name: res.data.meals[0].strMeal,
+        description: res.data.meals[0].strInstructions,
+        imageUrl: res.data.meals[0].strMealThumb   
+      }
+      this.addDish(this.dish);
+      // console.log(res.data.meals[0])
     }
-    // console.log(res.data.meals[0])
     )
     // .catch(err => console.log(err))
     }

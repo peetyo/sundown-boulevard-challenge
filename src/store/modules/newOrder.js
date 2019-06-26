@@ -15,7 +15,7 @@ const state = {
 const actions = {
 
   async addDish({commit}, objDish) {
-    
+    console.log('x')
     commit('newDish', objDish);
   },
   async addDrinks({commit}, arrDrinks) {
