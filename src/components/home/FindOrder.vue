@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <div>
-    <b-card
-    title="Find order"
-    tag="article"
-    class="mb-2"
-    >
-    <b-card-text>
-      Review or update your order.
-    </b-card-text>
+  <div id="find-order" class="custom-card h-100">
+    <h4>Find order</h4>
+    <p>Review or update your order.</p>
 
-    <b-form inline class="justify-content-center">
+    <b-form class="justify-content-center">
       <b-form-group
         id="input-email-group"
+        label="Email address:"
+        label-for="input-email"
       >
         <b-form-input
           id="input-email"
@@ -22,10 +17,11 @@
           placeholder="Enter Email"
         ></b-form-input>
       </b-form-group>
-      <b-button type="submit" variant="primary">Find</b-button>
+      <div class="text-right">
+        <b-button type="submit" variant="primary">Find</b-button>
+      </div>
     </b-form>
-  </b-card>
-</div>
+
   </div>
 </template>
 
@@ -35,5 +31,6 @@ export default {
 }
 </script>
 
-<style scoped>  
+<style scoped>
+
 </style>

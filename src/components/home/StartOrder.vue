@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <div>
-  <b-card
-    title="Start Order Flow"
-    tag="article"
-    class="mb-2"
-  >
-    <b-card-text>
-      Order your meal online and save your time.
-    </b-card-text>
+  <div id="start-order" class="custom-card h-100">
+    <h4>Start Order Flow</h4>
+    <p>Order your meal online and save time.</p>
+    <div class="text-right">
+      <b-button href="#" variant="primary">Order</b-button>
+    </div>
 
-    <b-button href="#" variant="primary">Order</b-button>
-  </b-card>
-</div>
   </div>
 </template>
 
@@ -23,5 +16,5 @@ export default {
 </script>
 
 <style scoped>
-    
+
 </style>

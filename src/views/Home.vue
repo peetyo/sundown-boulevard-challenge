@@ -1,9 +1,16 @@
 <template>
   <div class="home">
-    <Slider />
-    <StartOrder />
-    <FindOrder />
-    <LatestNews />
+    <b-container>
+  <b-row>
+    <b-col lg="8"><Slider /></b-col>
+    <b-col lg="4"><StartOrder /></b-col>
+  </b-row>
+  <b-row>
+    <b-col lg="6"><FindOrder /></b-col>
+    <b-col lg="6"><LatestNews /></b-col>
+  </b-row>
+</b-container>
+
   </div>
 </template>
 
