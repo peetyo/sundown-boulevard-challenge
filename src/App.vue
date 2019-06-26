@@ -30,4 +30,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+/* Overwriting Bootsrap's Defaults */
+a.btn-primary, button.btn-primary{
+    background-color: var(--primary-color);
+    border-color: unset;
+}
+a.btn-primary:hover, button.btn-primary:hover{
+    background-color: var(--primary-color);
+    border-color: unset;
+    opacity: var(--hover-opacity);
+}
 </style>

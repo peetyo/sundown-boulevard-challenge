@@ -41,6 +41,9 @@ export default {
     color: var(--primary-color);
     opacity: var(--hover-opacity);
   }
+  .navbar a.nav-link:focus{
+    color: var(--primary-color);
+  }
   .navbar-brand a{
     cursor: pointer;
   }
