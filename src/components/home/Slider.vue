@@ -12,32 +12,9 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <!-- Text slides with image -->
-      <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
-      ></b-carousel-slide>
 
-      <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide>
-
-      <!-- Slides with image only -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
-
-      <!-- Slides with img slot -->
-      <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <img
-          slot="img"
-          class="d-block img-fluid w-100"
-          width="1024"
-          height="480"
-          src="https://picsum.photos/1024/480/?image=55"
-          alt="image slot"
-        >
+      <b-carousel-slide v-for="dish in dishes" :key="dish.id" v-bind:img-src="dish.imageUrl">
+        <h1>{{ dish.title }}</h1>
       </b-carousel-slide>
 
     </b-carousel>
@@ -45,12 +22,27 @@
 </template>
 
 <script>
+  // import axios from 'axios';
   export default {
     name: "Slider",
     data() {
       return {
         slide: 0,
-        sliding: null
+        sliding: null,
+        dishes: [
+          {
+            title: "Peanut Butter Cheesecake",
+            imageUrl: "https://www.themealdb.com/images/media/meals/qtuuys1511387068.jpg"
+          },
+          {
+            title: "Timbits",
+            imageUrl: "https://www.themealdb.com/images/media/meals/txsupu1511815755.jpg"
+          },
+          {
+            title: "Chicken Marengo",
+            imageUrl: "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg"
+          }
+          ]
       }
     },
     methods: {
@@ -60,6 +52,36 @@
       onSlideEnd() {
         this.sliding = false
       }
+    },
+    created(){
+    //   for(let i = 0; i<3; i++){
+    //     console.log(i)
+    //     axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+    //     .then(res => {
+    //     const dish = { ...this.dish,
+    //       id: res.data.meals[0].idMeal,
+    //       name: res.data.meals[0].strMeal,
+    //       imageUrl: res.data.meals[0].strMealThumb   
+    //     }
+    //     this.dishes.push(dish);
+    //     console.log(this.dishes)
+    //     })
+    //  .catch(err => console.log(err))
+    //     }
     }
   }
 </script>
+
+<style scoped>
+  .img-fluid{
+    height:400px;
+    object-fit: cover;
+  }
+  .carousel-item{
+    height: 400px;
+  } 
+  .carousel-item img.img-fluid{
+      height: 400px;
+      object-fit: cover;
+  }
+</style>

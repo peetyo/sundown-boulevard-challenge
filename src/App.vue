@@ -41,6 +41,13 @@ a.btn-primary:hover, button.btn-primary:hover{
     border-color: unset;
     opacity: var(--hover-opacity);
 }
+.carousel-item{
+  height: 400px;
+} 
+.carousel-item img.img-fluid{
+    height: 400px;
+    object-fit: cover;
+}
 /* div.container{
   padding-left: 0;
   padding-right: 0;
