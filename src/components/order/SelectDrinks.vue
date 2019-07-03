@@ -3,24 +3,24 @@
     <b-container>
         <form>
       <b-row>
-        <b-col md="8">
+        <b-col md="8" class="mt-3">
           <div id="drinks-container">
-              <label v-bind:for="drink.id"  v-for="drink in drinks" :key="drink.id">
+            <div v-for="drink in drinks" :key="drink.id">
+              <input type="checkbox" v-bind:name="drink.id" v-bind:id="drink.id" v-bind:value="drink.id" v-model="selectedDrinksId">
+              <label v-bind:for="drink.id"  >
                 <div class="drink-wrapper">
                 <div class="drink" v-bind:style="{ 'background-image': 'url(' + drink.image_url + ')' }">
                 <h4>{{ drink.name }}</h4>
-                <!-- <p>{{ drink.description | trimText}}</p> -->
-                <!-- <img v-bind:src="drink.image_url" alt=""> -->
-                <input type="checkbox" v-bind:name="drink.id" v-bind:id="drink.id" v-bind:value="drink.id" v-model="selectedDrinksId">
                 </div>
                 </div>
               </label>
+            </div>
           </div>
-          <div>Selected drinks {{ selectedDrinksId }}</div>
+          <!-- <div>Selected drinks {{ selectedDrinksId }}</div> -->
         </b-col>
 
         <b-col md="4">
-          <div id="select-drinks" class="custom-card">
+          <div id="select-drinks" class="custom-card sticky-top">
             <h4>Would you like a drink?</h4>
             <p>Simply select the ones you like.</p>
             <p>* You can order more than one.</p>
@@ -32,6 +32,12 @@
       </b-row>
       </form>
    </b-container>
+   <div id="select-drinks-mobile">
+         <h4>Would you like a drink?</h4>
+          <div class="text-right">
+            <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
+          </div>
+    </div>
   </div>
 </template>
 
@@ -90,7 +96,6 @@ export default {
   .container{
     max-width: 800px;
   }
-
   #drinks-container {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(200px,auto));
@@ -100,8 +105,10 @@ export default {
     padding: 1rem;
     background-color: #eee;
     background-color: #C9C9C9;
+    border-radius: 3px;
   }
   .drink{
+    width: 100%;
     height:300px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -116,13 +123,49 @@ export default {
     padding: 5px;
     text-align: center;
   }
+  input[type="checkbox"]{
+    display: none;
+  }
   input:checked + label .drink-wrapper{
    background-color: #333;
+   background-color: var(--primary-color);
   }
+  label{
+    width: 100%;
+  }  
   /* TODO: Select drinks component can be fixed to the side on desktop and to the bottom on mobile */
-  /* #select-drinks{
+  #select-drinks-mobile{
     position: fixed;
-    margin-right: 1rem;
-  } */
+    display: none;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+    bottom:0;
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-top: 2px solid var(--primary-color);
+  }
+  #select-drinks-mobile h4{
+    font-size: 18px;
+    margin:0;
+  }
+  #select-drinks{
+    display: block;
+  }
+
+  .custom-card.sticky-top{
+    top: 100px;
+  }
+  @media only screen and (max-width: 768px) {
+    #select-drinks-mobile{
+      display: grid;
+    }
+    #select-drinks{
+      display: none;
+    }
+    .container{
+      padding-bottom: 100px;
+    }
+  }
 </style>
 

@@ -32,6 +32,9 @@ export default {
   .navbar{
     background-color: white !important;
     border-bottom: 2px solid var(--primary-color);
+    position: fixed;
+    z-index: 2;
+    width: 100%;
   }
   .navbar a.nav-link{
     color: var(--primary-color);

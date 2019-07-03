@@ -65,5 +65,10 @@ div.row{
 }
 .custom-card p{
   flex-grow: 1;
-}  
+}
+@media only screen and (max-width: 480px) {
+    a.btn-primary, button.btn-primary{
+      width: 100px;
+    }
+  }  
 </style>
