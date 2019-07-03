@@ -1,32 +1,38 @@
 <template>
-  <div>
+  <div class="container">
     <div class="custom-card">
-      <h1>Booking</h1>
+      <h4>Booking Details</h4>
       <form >
-        <input v-model="date" type="date" v-bind:min="dateToday" required>
+        <!-- <input v-model="date" type="date" v-bind:min="dateToday" required> -->
+        <datetime v-model="date" type="date"></datetime>
         <label for="numberOfGuests">Pick number of guests</label>
         <input v-model="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" min="1" max="10" value="1" required>
         <label for="email">Add your email</label>
         <input v-model="email" name="email" id="email" type="email" placeholder="EMAIL" required>
-        <input v-if="parent=='Order'" type="submit" value="Submit Order" @click="onBook">
-        <input v-else type="submit" value="Update Order" @click="onUpdate">
+        
+        <div class="text-right">
+              <!-- <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button> -->
+              <b-button v-if="parent=='Order'" type="submit" @click="onBook" variant="primary">Submit Order</b-button>
+              <b-button v-else type="submit" value="Update Order" @click="onUpdate" variant="primary"></b-button>
+        </div>
       </form>
     </div>
-    
+    {{ date }}
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import { Datetime } from 'vue-datetime';
 
 export default {
   name: 'SelectDate',
   components: {
-
+    datetime: Datetime
   },
   data() {
     return {
-      date: '',
+      date: '2019-07-11T00:00:00.000Z',
       numberOfGuests: 1,
       email: ''
     }
@@ -109,38 +115,6 @@ export default {
     max-width: 800px;
   }
 
-  #drinks-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px,auto));
-    grid-gap: 1rem;
-  }
-  .drink-wrapper {
-    padding: 1rem;
-    background-color: #eee;
-    background-color: #C9C9C9;
-  }
-  .drink{
-    height:300px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 1rem;
-  }
-  .drink h4{
-    color: var(--primary-color);
-    font-weight: 600;
-    /* background-color: #eee; */
-    background-color:rgba(250,250,250,0.7);
-    padding: 5px;
-    text-align: center;
-  }
-  input:checked + label .drink-wrapper{
-   background-color: #333;
-  }
-  /* TODO: Select drinks component can be fixed to the side on desktop and to the bottom on mobile */
-  /* #select-drinks{
-    position: fixed;
-    margin-right: 1rem;
-  } */
+ 
 </style>
 

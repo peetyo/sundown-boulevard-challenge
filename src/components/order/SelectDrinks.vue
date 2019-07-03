@@ -3,7 +3,7 @@
     <b-container>
         <form>
       <b-row>
-        <b-col md="8" class="mt-3">
+        <b-col md="8">
           <div id="drinks-container">
             <div v-for="drink in drinks" :key="drink.id">
               <input type="checkbox" v-bind:name="drink.id" v-bind:id="drink.id" v-bind:value="drink.id" v-model="selectedDrinksId">
@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
   .container{
-    max-width: 800px;
+    max-width: 980px;
   }
   #drinks-container {
     display: grid;
@@ -173,5 +173,10 @@ export default {
       width: 100px;
     }
   }
+  @media (min-width: 992px) { 
+    div.text-right{
+      text-align: center !important;
+    }
+   }
 </style>
 
