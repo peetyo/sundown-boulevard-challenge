@@ -11,7 +11,7 @@ import SelectDrinks from '@/components/order/SelectDrinks.vue'
 import SelectDate from '@/components/order/SelectDate.vue'
 import Receipt from '@/components/order/Receipt.vue'
 
-import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'home',
@@ -27,20 +27,23 @@ export default {
     }
   },
   beforeRouteLeave(to,from, next){
-    const answer = window.confirm("Are you sure? Leaving this page, would mean losing the current order data.");
-
-    if(answer){
+    if(this.currentComponent!= 'Receipt'){
+      const answer = window.confirm("Are you sure? Leaving this page, would mean losing the current order data.");
+      if(answer){
+        next();
+      } else {
+        next(false);
+      }
+    }else{
       next();
-    } else {
-      next(false)
     }
   },
   destroyed(){
-    
+    this.clearNewOrder();
   },
   methods: {
+    ...mapActions(['clearNewOrder']),
     changeComponent(newComponent){
-      console.log(newComponent);
       this.currentComponent = newComponent;
     }
   },

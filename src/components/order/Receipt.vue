@@ -34,7 +34,6 @@ export default {
     // TODO: Do this before "find order"
     getNewOrder(){
       this.order = this.$store.state.newOrder;
-      console.log(this.order);
     }
   },
   created(){

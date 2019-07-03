@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 const state = {
   dish: {},
   drinks: [],
@@ -10,16 +8,19 @@ const state = {
 
 const actions = {
 
-  async addDish({commit}, objDish) {
+  addDish({commit}, objDish) {
     commit('newDish', objDish);
   },
-  async addDrinks({commit}, arrDrinks) {
+  addDrinks({commit}, arrDrinks) {
     commit('newDrinks', arrDrinks);
   },
-  async addBookingDetails({commit}, objBookingDetails) {
-    console.log(objBookingDetails)
+  addBookingDetails({commit}, objBookingDetails) {
     commit('newBookingDetails', objBookingDetails);
-  }  
+  },
+  clearNewOrder({commit}) {
+    commit('clearOrder');
+  },
+  
 
   // continue with the rest of the properties
 };
@@ -31,6 +32,13 @@ const mutations = {
     state.date = bookingDetails.date;
     state.numberOfGuests = bookingDetails.numberOfGuests;
     state.email = bookingDetails.email;
+  },
+  clearOrder: (state) => {
+    state.dish = {};
+    state.drinks = [];
+    state.date = null;
+    state.numberOfGuests = 0;
+    state.email = '';
   }
 };
 
