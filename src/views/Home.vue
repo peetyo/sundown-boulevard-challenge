@@ -22,6 +22,7 @@ import FindOrder from '@/components/home/FindOrder.vue'
 import LatestNews from '@/components/home/LatestNews.vue'
 
 import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'home',
@@ -32,21 +33,10 @@ export default {
     LatestNews
   },
   methods:{
-    // TODO: Do this when before "find order"
-    getOrders(){
-      // GET request to fetch all orders and save them in local storage
-      // The axios code is a placeholder since the endpoint does not exist
-      // axios.get('/orders')
-      // .then(res => {
-      //   localStorage.setItem("orders", JSON.stringify(res.data));
-      // })
-      // .catch(err => console.log(err))
-      const orders = JSON.parse(localStorage.getItem("orders"))
-      console.log(orders)
-    }
+    ...mapActions(['fetchOrders']),
   },
   created(){
-    this.getOrders();
+    this.fetchOrders();
   }
 }
 </script>

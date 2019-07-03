@@ -16,10 +16,17 @@ const getters = {
 
 const actions = {
   async fetchOrders({ commit }) {
-    // const response = await axios.get('/orders')
-    // 
-    // console.log(response.data)
-    const response = {data: []}
+    // GET request to fetch all orders and save them in local storage
+      // The axios code is a placeholder since the endpoint does not exist
+      // axios.get('/orders')
+      // .then(res => {
+      //   localStorage.setItem("orders", JSON.stringify(res.data));
+      // })
+      // .catch(err => console.log(err))
+    // I use the localstorage instead to get all orders
+      const response = {data: []}
+      response.data = JSON.parse(localStorage.getItem("orders"))
+
     commit('setOrders', response.data);
   },
   async addOrder({commit}, newOrder) {
