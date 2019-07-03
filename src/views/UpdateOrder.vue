@@ -5,9 +5,6 @@
 <script>
 import Order from './Order.vue'
 
-
-import { mapActions } from 'vuex';
-
 export default {
   name: 'home',
   components: {

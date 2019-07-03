@@ -59,7 +59,6 @@ export default {
       this.drinks = res.data.map(({id, name, image_url}) => ({
         id,name,image_url
       }))
-      console.log(this.drinks)
     }
     )
     // .catch(err => console.log(err))

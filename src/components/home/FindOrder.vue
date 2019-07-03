@@ -50,7 +50,6 @@ export default {
         
       const order = this.$store.state.orders.orders.filter(order => order.email === this.email)
       if(order.length> 0){
-        console.log(order[0]);
         this.addOrderToUpdate(order[0]);
         this.$router.push({path: 'update-order'});
       } else {
