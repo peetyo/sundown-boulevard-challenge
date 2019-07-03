@@ -19,7 +19,7 @@
             <h4>Looks tasty?</h4>
             <p>When you are ready go ahead and select your drinks.</p>
             <div class="text-right">
-              <b-button href="#/load-dish" variant="primary">Next</b-button>
+              <b-button href="#/select-drinks" variant="primary">Next</b-button>
             </div>
           </div>
         </b-col>

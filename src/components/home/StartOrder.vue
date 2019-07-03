@@ -3,7 +3,7 @@
     <h4>Start Order Flow</h4>
     <p>Order your meal online and save time.</p>
     <div class="text-right">
-      <b-button href="#/load-dish" variant="primary">Order</b-button>
+      <b-button href="#/select-dish" variant="primary">Order</b-button>
     </div>
 
   </div>

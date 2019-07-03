@@ -3,7 +3,7 @@
 const state = {
   dish: {},
   drinks: [],
-  timestamp: null,
+  date: null,
   numberOfGuests: 0,
   email: ''
 };
@@ -18,7 +18,7 @@ const actions = {
     commit('newDish', objDish);
   },
   async addDrinks({commit}, arrDrinks) {
-    commit('newOrder', arrDrinks);
+    commit('newDrinks', arrDrinks);
   } 
 
   // continue with the rest of the properties
@@ -26,7 +26,7 @@ const actions = {
 
 const mutations = {
   newDish: (state, dish) => (state.dish = dish),
-  addDrinks: (state, drinks) => (state.drinks = drinks)
+  newDrinks: (state, drinks) => (state.drinks = drinks)
 };
 
 export default {
