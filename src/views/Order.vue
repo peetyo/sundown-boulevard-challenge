@@ -26,6 +26,18 @@ export default {
       currentComponent: 'LoadDish'
     }
   },
+  beforeRouteLeave(to,from, next){
+    const answer = window.confirm("Are you sure? Leaving this page, would mean losing the current order data.");
+
+    if(answer){
+      next();
+    } else {
+      next(false)
+    }
+  },
+  destroyed(){
+    
+  },
   methods: {
     changeComponent(newComponent){
       console.log(newComponent);
