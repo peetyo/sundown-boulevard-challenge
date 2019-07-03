@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style scoped>
-
+  @media (min-width: 992px) { 
+    div.text-right{
+      text-align: center !important;
+    }
+   }
 </style>

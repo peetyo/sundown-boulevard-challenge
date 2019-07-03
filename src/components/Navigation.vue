@@ -33,7 +33,7 @@ export default {
     background-color: white !important;
     border-bottom: 2px solid var(--primary-color);
     position: fixed;
-    z-index: 2;
+    z-index: 1022;
     width: 100%;
   }
   .navbar a.nav-link{

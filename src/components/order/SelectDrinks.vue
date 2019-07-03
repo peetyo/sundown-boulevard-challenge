@@ -114,6 +114,7 @@ export default {
     background-repeat: no-repeat;
     background-position: center;
     padding: 1rem;
+    cursor: pointer;
   }
   .drink h4{
     color: var(--primary-color);

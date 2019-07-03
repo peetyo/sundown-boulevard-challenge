@@ -1,6 +1,6 @@
 <template>
   <div id="find-order" class="custom-card h-100">
-    <h4>Find order</h4>
+    <h4>Find your order</h4>
     <p>Review or update your order.</p>
     <div v-if="notFound" class="alert alert-dark" role="alert">
       Order not found. Did you write your email correctly?
@@ -17,7 +17,7 @@
           v-model="email"
           type="email"
           required
-          placeholder="Enter Email"
+          placeholder="ENTER EMAIL"
         ></b-form-input>
       </b-form-group>
       <div class="text-right">

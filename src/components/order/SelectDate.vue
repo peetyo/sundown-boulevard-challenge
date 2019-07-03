@@ -7,7 +7,7 @@
         <label for="numberOfGuests">Pick number of guests</label>
         <input v-model="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" min="1" max="10" value="1" required>
         <label for="email">Add your email</label>
-        <input v-model="email" name="email" id="email" type="email" placeholder="email" required>
+        <input v-model="email" name="email" id="email" type="email" placeholder="EMAIL" required>
         <input v-if="parent=='Order'" type="submit" value="Submit Order" @click="onBook">
         <input v-else type="submit" value="Update Order" @click="onUpdate">
       </form>

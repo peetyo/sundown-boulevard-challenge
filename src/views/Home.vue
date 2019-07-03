@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <b-container>
-      <b-row>
-        <b-col lg="8"><Slider /></b-col>
-        <b-col lg="4"><StartOrder /></b-col>
+      <b-row class="mb-0">
+        <b-col lg="8" class="mb-4"><Slider /></b-col>
+        <b-col lg="4" class="mb-4"><StartOrder /></b-col>
       </b-row>
       <b-row>
-        <b-col lg="6"><FindOrder /></b-col>
-        <b-col lg="6"><LatestNews /></b-col>
+        <b-col lg="6" class="mb-4"><FindOrder /></b-col>
+        <b-col lg="6" class="mb-4"><LatestNews /></b-col>
       </b-row>
    </b-container>
 
@@ -40,9 +40,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
  .home{
    padding-top:100px;
+ }
+ .home h4{
+   max-width: 200px;
+   margin-bottom: 3rem;
  }
 </style>
 
