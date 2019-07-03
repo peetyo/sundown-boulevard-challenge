@@ -25,7 +25,7 @@
             <p>Simply select the ones you like.</p>
             <p>* You can order more than one.</p>
             <div class="text-right">
-              <b-button href="#/select-date" variant="primary">Next</b-button>
+              <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
             </div>
           </div>
         </b-col>

@@ -45,7 +45,8 @@ export default {
       this.addBookingDetails(bookingDetails);
       console.log(this.$store.state.newOrder);
       this.addOrder(this.$store.state.newOrder);
-      this.$router.push({path: 'receipt'});
+      // this.$router.push({path: 'receipt'});
+      this.$emit('changeComponent', 'Receipt');
 
     }
   },
