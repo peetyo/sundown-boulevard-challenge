@@ -21,7 +21,6 @@ import StartOrder from '@/components/home/StartOrder.vue'
 import FindOrder from '@/components/home/FindOrder.vue'
 import LatestNews from '@/components/home/LatestNews.vue'
 
-import axios from 'axios';
 import { mapActions } from 'vuex';
 
 export default {

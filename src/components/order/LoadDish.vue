@@ -37,6 +37,9 @@ export default {
   components: {
 
   },
+  props: {
+    parent:{}
+  },
   data() {
     return {
       dish: {
@@ -77,7 +80,11 @@ export default {
     }
   }, 
   created(){
-    this.generateDish();
+    if(this.parent === 'Order'){
+      this.generateDish();
+    } else {
+      this.dish = this.$store.state.newOrder.dish;
+    }
   }
 }
 </script>

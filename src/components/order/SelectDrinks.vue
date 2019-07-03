@@ -56,7 +56,10 @@ export default {
     fetchDrinks(){
       axios.get('HTTPS://API.PUNKAPI.COM/V2/BEERS')
     .then(res => {
-      this.drinks = res.data;
+      this.drinks = res.data.map(({id, name, image_url}) => ({
+        id,name,image_url
+      }))
+      console.log(this.drinks)
     }
     )
     // .catch(err => console.log(err))
@@ -79,6 +82,7 @@ export default {
   },
   created(){
     this.fetchDrinks();
+    this.selectedDrinksId = this.$store.state.newOrder.drinks.map(drink => drink.id)
   }
 }
 </script>

@@ -20,8 +20,9 @@ const actions = {
   clearNewOrder({commit}) {
     commit('clearOrder');
   },
-  
-
+  addOrderToUpdate({commit}, objOrder) {
+    commit('orderToUpdate', objOrder);
+  },
   // continue with the rest of the properties
 };
 
@@ -39,6 +40,15 @@ const mutations = {
     state.date = null;
     state.numberOfGuests = 0;
     state.email = '';
+  },
+  orderToUpdate: (state, orderToUpdate) => {
+    // state = {...state, orderToUpdate}
+    state.dish = orderToUpdate.dish;
+    state.drinks = orderToUpdate.drinks;
+    state.date = orderToUpdate.date;
+    state.numberOfGuests = orderToUpdate.numberOfGuests;
+    state.email = orderToUpdate.email;
+    state.id = orderToUpdate.id;
   }
 };
 

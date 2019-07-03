@@ -1,6 +1,6 @@
 <template>
   <div class="order">
-    <component v-bind:is="currentComponent" v-on:changeComponent="changeComponent"></component>
+    <component v-bind:is="currentComponent" v-on:changeComponent="changeComponent" v-bind:parent="parent"></component>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'home',
+  props: {
+    parent: {
+      default: 'Order'
+    }
+  },
   components: {
     LoadDish,
     SelectDrinks,

@@ -2,12 +2,7 @@
 import uuid from 'uuid';
 
 const state = {
-  orders: [
-    {id: 1,
-    dish: "abc"},
-    {id: 2,
-      dish: "efg"},
-  ]
+  orders: []
 };
 
 const getters = {
@@ -25,16 +20,24 @@ const actions = {
       // .catch(err => console.log(err))
     // I use the localstorage instead to get all orders
       const response = {data: []}
-      response.data = JSON.parse(localStorage.getItem("orders"))
+      if(localStorage.getItem("orders")){
+        response.data = JSON.parse(localStorage.getItem("orders"))
+      }else{
+        response.data = [];
+      }
 
     commit('setOrders', response.data);
   },
   async addOrder({commit}, newOrder) {
-    console.log('add order')
     // const response = await axios.post('/orders', newOrder);
     const response = {data: {...newOrder,
       id: uuid.v4()} } // Using uuid to create a unique id manually. In a real world scenario the backend would create one automatically.
     commit('newOrder', response.data);
+  },
+  async updateOrder({commit}, updatedOrder) {
+    // const response = await axios.post(`/orders/${updatedOrder.id}`, updatedOrder);
+    const response = {data: {...updatedOrder} } // Using uuid to create a unique id manually. In a real world scenario the backend would create one automatically.
+    commit('updatedOrder', response.data);
   } 
 };
 
@@ -42,6 +45,18 @@ const mutations = {
   setOrders: (state, orders) => (state.orders = orders),
   newOrder: (state, newOrder) => {
     state.orders.unshift(newOrder);
+    
+    localStorage.setItem("orders", JSON.stringify(state.orders));
+  },
+  updatedOrder: (state, updatedOrder) => {
+    const orderToUpdate = state.orders.findIndex(order => order.id = updatedOrder.id);
+    
+    state.orders[orderToUpdate].dish = updatedOrder.dish;
+    state.orders[orderToUpdate].drinks = updatedOrder.drinks;
+    state.orders[orderToUpdate].date = updatedOrder.date;
+    state.orders[orderToUpdate].numberOfGuests = updatedOrder.numberOfGuests;
+    state.orders[orderToUpdate].email = updatedOrder.email;
+    state.orders[orderToUpdate].id = updatedOrder.id;
     
     localStorage.setItem("orders", JSON.stringify(state.orders));
   }
