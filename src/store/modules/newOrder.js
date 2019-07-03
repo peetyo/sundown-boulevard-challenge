@@ -8,10 +8,6 @@ const state = {
   email: ''
 };
 
-// const getters = {
-//   allOrders: state => state.orders
-// };
-
 const actions = {
 
   async addDish({commit}, objDish) {
@@ -19,14 +15,23 @@ const actions = {
   },
   async addDrinks({commit}, arrDrinks) {
     commit('newDrinks', arrDrinks);
-  } 
+  },
+  async addBookingDetails({commit}, objBookingDetails) {
+    console.log(objBookingDetails)
+    commit('newBookingDetails', objBookingDetails);
+  }  
 
   // continue with the rest of the properties
 };
 
 const mutations = {
   newDish: (state, dish) => (state.dish = dish),
-  newDrinks: (state, drinks) => (state.drinks = drinks)
+  newDrinks: (state, drinks) => (state.drinks = drinks),
+  newBookingDetails: (state, bookingDetails) => {
+    state.date = bookingDetails.date;
+    state.numberOfGuests = bookingDetails.numberOfGuests;
+    state.email = bookingDetails.email;
+  }
 };
 
 export default {
