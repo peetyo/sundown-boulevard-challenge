@@ -86,6 +86,11 @@ div.row{
 #app h1,#app h2,#app h3,#app h4,#app h5,#app h6{
   font-weight: 600;
 }
+#app h4{
+  color: var(--primary-color);
+  margin-top: 5px;
+  margin-bottom: 3rem;
+}
 .custom-card{
   padding: 15px;
   text-align: left;
@@ -93,13 +98,10 @@ div.row{
   flex-direction: column;
   border-bottom: 2px solid var(--primary-color);
   border: 2px solid #333;
+  margin-bottom: 20px;
 }
 .custom-card p{
   flex-grow: 1;
 }
-@media only screen and (max-width: 480px) {
-    a.btn-primary, button.btn-primary{
-      width: 100px;
-    }
-  }  
+  
 </style>

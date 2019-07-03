@@ -46,7 +46,6 @@ export default {
  }
  .home h4{
    max-width: 200px;
-   margin-bottom: 3rem;
  }
 </style>
 

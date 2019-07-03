@@ -73,6 +73,9 @@
 </script>
 
 <style scoped>
+  .carousel{
+    border: 2px solid #333;
+  }
   .img-fluid{
     height:400px;
     object-fit: cover;

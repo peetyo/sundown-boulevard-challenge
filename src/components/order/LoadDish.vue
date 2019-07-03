@@ -6,7 +6,7 @@
       <b-row>
         <b-col md="8">
           <img v-bind:src="dish.imageUrl" alt="dish image">
-          <div id="start-order" class="custom-card">
+          <div id="load-dish" class="custom-card">
             <h4>{{ dish.name }}</h4>
               <p>Unfortunately, this is a recipe and not the description of the dish. {{ dish.description | trimText }}</p>
             <div class="text-right">
@@ -97,6 +97,12 @@ export default {
     width:100%;
     height: 300px;
     object-fit: cover;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    border-right: 2px solid #333;
+  }
+  #load-dish{
+    border-top:unset;
   }
 </style>
 
