@@ -2,8 +2,8 @@
   <div id="find-order" class="custom-card h-100">
     <h4>Find your order</h4>
     <p>Review or update your order.</p>
-    <div v-if="notFound" class="alert alert-dark" role="alert">
-      Order not found. Did you write your email correctly?
+    <div v-if="validation.error" class="alert alert-dark" role="alert">
+      {{ validation.message }}
     </div>
 
     <b-form v-on:submit="findOrder" class="justify-content-center">
@@ -37,26 +37,39 @@ export default {
   data(){
     return{
       email: '',
-      notFound: false
+      notFound: false,
+      validation: {
+        error: false,
+        message: ''
+      }
     }
   },
   methods: {
     ...mapActions(['fetchOrders','addOrderToUpdate']),
     findOrder(event){
       event.preventDefault();
-      // console.log(this.email);
-      // fetching again to make sure we have the updated list before search
-      this.fetchOrders();
+      let re = /\S+@\S+\.\S+/;
+      if(re.test(this.email)){
+        this.validation.error = false;
+        this.validation.message = '';
+        // fetching again to make sure we have the updated list before search
+        this.fetchOrders();
         
-      const order = this.$store.state.orders.orders.filter(order => order.email === this.email)
+        const order = this.$store.state.orders.orders.filter(order => order.email === this.email)
       if(order.length> 0){
         this.addOrderToUpdate(order[0]);
         this.$router.push({path: 'update-order'});
       } else {
         // TODO: Add vue transitions
-        this.notFound = true;
-        setInterval(()=>{this.notFound= false}, 5000);
+
+        this.validation.error = true;
+        this.validation.message = 'Order not found. Did you write your email correctly?';
+      }} else {
+        this.validation.error = true;
+        this.validation.message = 'Please, enter valid email.';
       }
+
+      
     }
   }
 }

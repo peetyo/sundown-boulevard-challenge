@@ -21,9 +21,12 @@
         <b-col md="4">
           <div id="select-drinks" class="custom-card sticky-top">
             <h4>Choose your drinks</h4>
+            <div v-if="validation.error" class="alert alert-dark" role="alert">
+              {{ validation.message }}
+            </div>
             <p class="mb-4">Simply select the drinks you like and proceed to reservation details.</p>
-            <div class="text-right">
-              <b-button v-on:click="$emit('changeComponent', 'Reservation')" variant="primary">Next</b-button>
+            <div class="text-center">
+              <b-button v-on:click="submitDrinks" variant="primary">Next</b-button>
             </div>
           </div>
         </b-col>
@@ -31,10 +34,15 @@
       </form>
    </b-container>
    <div id="select-drinks-mobile">
-         <h4>Choose your drinks</h4>
-          <div class="text-right">
-            <b-button v-on:click="$emit('changeComponent', 'Reservation')" variant="primary">Next</b-button>
-          </div>
+    <div v-if="validation.error" class="alert alert-dark" role="alert">
+      {{ validation.message }}
+    </div>
+    <div id="submit">
+      <h4>Choose your drinks</h4>
+      <div class="text-right">
+        <b-button v-on:click="submitDrinks" variant="primary">Next</b-button>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -52,7 +60,11 @@ export default {
     return {
       drinks: [],
       selectedDrinksId: [],
-      selectedDrinks: []
+      selectedDrinks: [],
+      validation: {
+        error: false,
+        message: ''
+      }
     }
   },
   methods:{
@@ -66,12 +78,26 @@ export default {
     }
     )
     // .catch(err => console.log(err))
+    },
+    submitDrinks(){
+      if(this.selectedDrinksId.length){
+        this.validation.error = false;
+        this.validation.message = '';
+        this.$emit('changeComponent', 'Reservation')
+      }else{
+        this.validation.error = true;
+        this.validation.message = 'Please, select at least one drink.';
+      }
     }
   },
   watch: {
     selectedDrinksId: function (newDrinks) {
       let selectedDrinks = this.drinks.filter( drink => newDrinks.includes(drink.id))
       this.addDrinks(selectedDrinks);
+      if(this.selectedDrinksId.length){
+        this.validation.error = false;
+        this.validation.message = '';
+      }
     }
   },
   filters: {
@@ -157,13 +183,16 @@ export default {
   #select-drinks-mobile{
     position: fixed;
     display: none;
-    align-items: center;
-    grid-template-columns: 2fr 1fr;
     bottom:0;
     width: 100%;
     padding: 1rem;
     background-color: white;
     border-top: 2px solid var(--primary-color);
+  }
+  #select-drinks-mobile #submit{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
   }
   #select-drinks-mobile h4{
     font-size: 18px;
@@ -175,10 +204,12 @@ export default {
 
   .custom-card.sticky-top{
     top: 100px;
+    max-width: 280px;
+    margin:auto;
   }
   @media only screen and (max-width: 768px) {
     #select-drinks-mobile{
-      display: grid;
+      display: block;
     }
     #select-drinks{
       display: none;
@@ -192,11 +223,6 @@ export default {
       width: 100px;
     }
   }
-  @media (min-width: 992px) { 
-    div.text-right{
-      text-align: center !important;
-    }
-   }
   @media (hover: none) {
     .drink-wrapper:hover{
       border: 2px solid lightgray;

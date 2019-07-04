@@ -60,6 +60,12 @@ export default {
   text-transform: uppercase;
 }
 /* Overwriting Bootsrap's Defaults */
+#app input{
+  box-shadow:none !important;
+}
+#app button{
+  box-shadow:none !important;
+}
 a.btn-primary, button.btn-primary{
     background-color: var(--primary-color);
     border-color: unset;
