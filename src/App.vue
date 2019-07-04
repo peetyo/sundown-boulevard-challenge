@@ -138,5 +138,27 @@ div.vdatetime-time-picker__item--selected {
 .vdatetime-time-picker__list.vdatetime-time-picker__list--minutes{
   padding-top: 4rem;
 }
+div.vdatetime-popup{
+  font-family: 'Helvetica-neue', Helvetica, Arial, sans-serif;
+}
+div.vdatetime-calendar__month__weekday, div.vdatetime-calendar__month__day{
+  font-size: 1rem;
+}
+div.vdatetime-overlay{
+  z-index: 1022;
+}
+div.vdatetime-popup{
+  z-index: 1023;
+}
 
+/* Styling number picker */
+button.number-input__button:hover::after, button.number-input__button:hover::before{
+  background-color: var(--primary-color) !important;
+}
+.number-input__button::before {
+    height: 3px !important;
+}
+.number-input__button::after {
+    width: 3px !important;
+}
 </style>

@@ -33,7 +33,7 @@
             label="Pick number of guests"
             label-for="numberOfGuests"
             >
-            <b-form-input
+            <!-- <b-form-input
               id="numberOfGuests"
               v-model="numberOfGuests"
               name="numberOfGuests"
@@ -42,7 +42,16 @@
               min="1"
               max="10"
               value="1"
-            ></b-form-input>
+            ></b-form-input> -->
+            <numberinput controls id="numberOfGuests"
+              v-model="numberOfGuests"
+              name="numberOfGuests"
+              type="number"
+              required
+              :min="1"
+              :max="10"
+              value="1"
+              :inputtable="false" inline></numberinput>
           </b-form-group>
             <!-- <label for="numberOfGuests">Pick number of guests</label>
             <input v-model="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" min="1" max="10" value="1" required> -->
@@ -64,11 +73,13 @@
 <script>
 import { mapActions } from 'vuex';
 import { Datetime } from 'vue-datetime';
+import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 export default {
   name: 'SelectDate',
   components: {
-    datetime: Datetime
+    datetime: Datetime,
+    numberinput: VueNumberInput
   },
   data() {
     return {
@@ -162,7 +173,7 @@ export default {
   .container{
     max-width: 800px;
   }
-  #input-email, #numberOfGuests{
+  #input-email{
     /* max-width: 250px; */
     width: 100%;
   
@@ -170,7 +181,7 @@ export default {
   #form-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 1rem 3rem;
   }
 
 </style>
