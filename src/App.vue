@@ -70,6 +70,9 @@ export default {
 #app button{
   box-shadow:none !important;
 }
+#app p{
+  padding-right:10px;
+}
 a.btn-primary, button.btn-primary{
     background-color: var(--primary-color);
     border-color: unset;
