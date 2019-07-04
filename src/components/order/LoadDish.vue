@@ -64,7 +64,11 @@ export default {
         imageUrl: res.data.meals[0].strMealThumb   
       }
       this.addDish(this.dish);
-      // console.log(res.data.meals[0])
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
     )
     // .catch(err => console.log(err))

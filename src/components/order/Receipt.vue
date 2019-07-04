@@ -2,7 +2,7 @@
   <div class="receipt container">
     <div class="custom-card">
       <h4>Your Order</h4>
-      <ul id="order-details">
+      <ul id="order-details" class="mb-5">
         <li> <span>Your Email:</span></li>
         <li>{{ order.email }}</li>
         <li> <span>Date and Time:</span> </li>
