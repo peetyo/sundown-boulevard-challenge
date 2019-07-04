@@ -30,7 +30,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { setInterval } from 'timers';
 
 export default {
   name: 'FindOrder',

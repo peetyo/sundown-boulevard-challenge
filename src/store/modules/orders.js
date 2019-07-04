@@ -23,6 +23,7 @@ const actions = {
       if(localStorage.getItem("orders")){
         response.data = JSON.parse(localStorage.getItem("orders"))
       }else{
+        localStorage.setItem("orders",'[]')
         response.data = [];
       }
 

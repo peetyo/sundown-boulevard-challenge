@@ -52,10 +52,12 @@
           </b-form-group>
           </div>
         </div>  
-        
+        <div v-if="validation.error" class="alert alert-dark" role="alert">
+          {{ validation.message }}
+        </div>
         <div class="text-right mt-2">
-              <b-button v-if="parent=='Order'" type="submit" @click="onBook" variant="primary">Submit Order</b-button>
-              <b-button v-else type="submit" @click="onUpdate" variant="primary">Update Order</b-button>
+              <b-button v-if="parent=='Order'" type="submit" @click="submitOrder('addOrder')" variant="primary">Submit Order</b-button>
+              <b-button v-else type="submit" @click="submitOrder('updateOrder')" variant="primary">Update Order</b-button>
         </div>
       </b-form>
     </div>
@@ -77,36 +79,77 @@ export default {
     return {
       date: '',
       numberOfGuests: 1,
-      email: ''
+      email: '',
+      validation: {
+        error: false,
+        message: ''
+      }
     }
   },
   props: {
     parent:{}
   },
   methods:{
-    ...mapActions(['addBookingDetails','addOrder','updateOrder']),
-    onBook(event){
+    ...mapActions(['addBookingDetails','addOrder','updateOrder',]),
+    submitOrder(actionName){
       event.preventDefault()
-      let bookingDetails = {
-        date: this.date,
-        numberOfGuests: this.numberOfGuests,
-        email: this.email
+      if(!this.validate()){
+        return
       }
-      this.addBookingDetails(bookingDetails);
-      this.addOrder(this.$store.state.newOrder);
-      this.$emit('changeComponent', 'Receipt');
 
-    },
-    onUpdate(event){
-      event.preventDefault()
       let bookingDetails = {
         date: this.date,
         numberOfGuests: this.numberOfGuests,
         email: this.email
       }
       this.addBookingDetails(bookingDetails);
-      this.updateOrder(this.$store.state.newOrder);
+      this[actionName](this.$store.state.newOrder);
       this.$emit('changeComponent', 'Receipt');
+    },
+    validate(){
+      if(this.date == ''){
+        this.validation.error = true;
+        this.validation.message = 'Please, select date and time';
+        return false;
+      }
+      // validating ISO 8601 format
+      let reISO = /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$/g;
+      if(!reISO.test(this.date)){
+        this.validation.error = true;
+        this.validation.message = 'Incorrect date and time format';
+        return false;
+      }
+
+      const selectedDatetime = new Date(this.date)
+      const datetimeNow = new Date(this.datetimeToday)
+      const diff =  selectedDatetime - datetimeNow
+      if(diff<0){
+        this.validation.error = true;
+        this.validation.message = 'Please, select upcoming date and time';
+        return false
+      }
+
+      let reEmail = /\S+@\S+\.\S+/;
+      if(!reEmail.test(this.email)){
+        this.validation.error = true;
+        this.validation.message = 'Please, enter valid email';
+        return false
+      }
+
+      // check if a reservation was already created with this email
+      const match = this.$store.state.orders.orders.filter(order => order.email === this.email)
+      if(match.length){
+        this.validation.error = true;
+        this.validation.message = 'Sorry, you have already made a reservation with this email';
+        return false
+      }
+      
+      if(this.numberOfGuests<1 || this.numberOfGuests>10){
+        this.validation.error = true;
+        this.validation.message = 'Please, between 1 and 10 guests';
+        return false
+      }
+      return true;
     }
   },
   watch: {

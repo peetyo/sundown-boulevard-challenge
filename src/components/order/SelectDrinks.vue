@@ -75,6 +75,7 @@ export default {
       this.drinks = res.data.map(({id, name, image_url}) => ({
         id,name,image_url
       }))
+      this.selectedDrinksId = this.$store.state.newOrder.drinks.map(drink => drink.id)
     }
     )
     // .catch(err => console.log(err))
@@ -111,7 +112,6 @@ export default {
   },
   created(){
     this.fetchDrinks();
-    this.selectedDrinksId = this.$store.state.newOrder.drinks.map(drink => drink.id)
   }
 }
 </script>
