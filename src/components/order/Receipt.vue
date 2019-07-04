@@ -60,7 +60,7 @@ export default {
     list-style: none;
   }
   #order-details ul{
-    color: #2c3e50;;
+    color:var(--text-color);
     list-style-type: square;
   }
   #order-details > li:nth-child(odd){

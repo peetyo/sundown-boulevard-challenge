@@ -1,12 +1,12 @@
 <template>
   <div>
-  <b-navbar toggleable="lg" type="light" variant="info">
+  <b-navbar toggleable="sm" type="light" variant="info">
     <b-navbar-brand href="#/"><img src="../assets/sundown-boulevard.png" alt="company logo"></b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
+      <b-navbar-nav class="mx-auto">
         <b-nav-item href="#">Restauranter</b-nav-item>
         <b-nav-item href="#">Produkter</b-nav-item>
         <b-nav-item href="#">Nyhedsbrev</b-nav-item>
@@ -35,6 +35,7 @@ export default {
     position: fixed;
     z-index: 1022;
     width: 100%;
+    text-align: center;
   }
   .navbar a.nav-link{
     color: var(--primary-color);

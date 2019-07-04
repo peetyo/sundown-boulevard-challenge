@@ -45,6 +45,7 @@ export default {
 :root {
   --primary-color: #BA2329; 
   --secondary-color: #007DDB;
+  --text-color: #2c3e50;
   --hover-opacity: 0.7;
 }
 #app {
@@ -96,6 +97,11 @@ input.form-control{
 }
 div.row{
   margin-bottom: 20px;
+}
+.alert-dark {
+    color: whitesmoke !important;
+    background-color: var(--secondary-color) !important;
+    border: none !important;
 }
 @media only screen and (max-width: 576px) {
   h1{

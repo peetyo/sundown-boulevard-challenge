@@ -137,11 +137,13 @@ export default {
       }
 
       // check if a reservation was already created with this email
-      const match = this.$store.state.orders.orders.filter(order => order.email === this.email)
-      if(match.length){
-        this.validation.error = true;
-        this.validation.message = 'Sorry, you have already made a reservation with this email';
-        return false
+      if(this.parent=='Order'){
+        const match = this.$store.state.orders.orders.filter(order => order.email === this.email)
+        if(match.length){
+          this.validation.error = true;
+          this.validation.message = 'Sorry, you have already made a reservation with this email';
+          return false
+        }
       }
       
       if(this.numberOfGuests<1 || this.numberOfGuests>10){

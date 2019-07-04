@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Update Order</h1>
+  <div id="update-order">
+    <h4>Update Order</h4>
     <Order parent="UpdateOrder" ref="orderComponent"/>
   </div>
 </template>
@@ -40,8 +40,9 @@ export default {
 }
 </script>
 <style>
-  h1{
-    padding-left: 15px;
+  #update-order>h4{
+    text-align: center;
     margin-bottom: 1rem;
+    color: var(--text-color);
   }
 </style>

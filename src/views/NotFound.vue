@@ -22,6 +22,6 @@ export default {
     color: var(--primary-color) !important;
   }
   .not-found h4{
-    color: #2c3e50 !important;
+    color: var(--text-color) !important;
   }
 </style>

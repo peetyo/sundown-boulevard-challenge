@@ -38,7 +38,7 @@
       {{ validation.message }}
     </div>
     <div id="submit">
-      <h4>Choose your drinks</h4>
+      <h4>Chose your drinks?</h4>
       <div class="text-right">
         <b-button v-on:click="submitDrinks" variant="primary">Next</b-button>
       </div>
@@ -179,7 +179,7 @@ export default {
   label{
     width: 100%;
   }  
-  /* TODO: Select drinks component can be fixed to the side on desktop and to the bottom on mobile */
+  
   #select-drinks-mobile{
     position: fixed;
     display: none;
