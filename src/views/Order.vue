@@ -7,7 +7,7 @@
 <script>
 import LoadDish from '@/components/order/LoadDish.vue'
 import SelectDrinks from '@/components/order/SelectDrinks.vue'
-import SelectDate from '@/components/order/SelectDate.vue'
+import Reservation from '@/components/order/Reservation.vue'
 import Receipt from '@/components/order/Receipt.vue'
 
 import { mapActions } from 'vuex';
@@ -22,7 +22,7 @@ export default {
   components: {
     LoadDish,
     SelectDrinks,
-    SelectDate,
+    Reservation,
     Receipt
   },
   data() {

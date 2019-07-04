@@ -23,7 +23,7 @@
             <h4>Choose your drinks</h4>
             <p class="mb-4">Simply select the drinks you like and proceed to reservation details.</p>
             <div class="text-right">
-              <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
+              <b-button v-on:click="$emit('changeComponent', 'Reservation')" variant="primary">Next</b-button>
             </div>
           </div>
         </b-col>
@@ -33,7 +33,7 @@
    <div id="select-drinks-mobile">
          <h4>Choose your drinks</h4>
           <div class="text-right">
-            <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
+            <b-button v-on:click="$emit('changeComponent', 'Reservation')" variant="primary">Next</b-button>
           </div>
     </div>
   </div>

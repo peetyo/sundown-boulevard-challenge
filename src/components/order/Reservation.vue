@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="custom-card">
-      <h4>Booking Details</h4>
+      <h4>Reservation Details</h4>
       <b-form >
         <div id="form-container">
           <div>
@@ -68,7 +68,7 @@ import { Datetime } from 'vue-datetime';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 export default {
-  name: 'SelectDate',
+  name: 'Reservation',
   components: {
     datetime: Datetime,
     numberinput: VueNumberInput
