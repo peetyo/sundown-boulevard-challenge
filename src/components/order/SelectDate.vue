@@ -2,22 +2,62 @@
   <div class="container">
     <div class="custom-card">
       <h4>Booking Details</h4>
-      <form >
+      <b-form >
+        <!-- <input v-model="date" type="datetime-local" v-bind:min="dateToday" required> -->
         <!-- <input v-model="date" type="date" v-bind:min="dateToday" required> -->
-        <datetime v-model="date" type="date"></datetime>
-        <label for="numberOfGuests">Pick number of guests</label>
-        <input v-model="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" min="1" max="10" value="1" required>
-        <label for="email">Add your email</label>
-        <input v-model="email" name="email" id="email" type="email" placeholder="EMAIL" required>
+        <div id="form-container">
+          <div>
+            <label for="datetime-picker">Select Date and Time</label>
+            <datetime v-model="date" type="datetime" v-bind:min-datetime="datetimeToday" class="form-group" input-id ="datetime-picker" input-class="form-control" :minute-step="15" format="DDDD T"></datetime>
+          
+       
         
-        <div class="text-right">
+          <b-form-group
+          id="input-email-group"
+          label="Add Your Email"
+          label-for="input-email"
+          >
+            <b-form-input
+              id="input-email"
+              v-model="email"
+              name="email"
+              type="email"
+              required
+              placeholder="ENTER EMAIL"
+            ></b-form-input>
+          </b-form-group>
+          </div>
+          <div>
+            <b-form-group
+            id="input-numberOfGuests-group"
+            label="Pick number of guests"
+            label-for="numberOfGuests"
+            >
+            <b-form-input
+              id="numberOfGuests"
+              v-model="numberOfGuests"
+              name="numberOfGuests"
+              type="number"
+              required
+              min="1"
+              max="10"
+              value="1"
+            ></b-form-input>
+          </b-form-group>
+            <!-- <label for="numberOfGuests">Pick number of guests</label>
+            <input v-model="numberOfGuests" name="numberOfGuests" id="numberOfGuests" type="number" min="1" max="10" value="1" required> -->
+          </div>
+        </div>  
+        
+        <div class="text-right mt-2">
               <!-- <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button> -->
               <b-button v-if="parent=='Order'" type="submit" @click="onBook" variant="primary">Submit Order</b-button>
-              <b-button v-else type="submit" value="Update Order" @click="onUpdate" variant="primary"></b-button>
+              <b-button v-else type="submit" @click="onUpdate" variant="primary">Update Order</b-button>
         </div>
-      </form>
+      </b-form>
     </div>
-    {{ date }}
+    dateTimetoday:-{{ datetimeToday }}
+    <p>date:={{ date }}</p>
   </div>
 </template>
 
@@ -32,7 +72,7 @@ export default {
   },
   data() {
     return {
-      date: '2019-07-11T00:00:00.000Z',
+      date: '',
       numberOfGuests: 1,
       email: ''
     }
@@ -87,20 +127,28 @@ export default {
     }
   },
   computed: {
-    dateToday: function() {
-      var d = new Date(),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
+    // Only for date input
+    // dateToday: function() {
+    //   var d = new Date(),
+    //       month = '' + (d.getMonth() + 1),
+    //       day = '' + d.getDate(),
+    //       year = d.getFullYear();
 
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
+    //   if (month.length < 2) month = '0' + month;
+    //   if (day.length < 2) day = '0' + day;
 
-      return [year, month, day].join('-');
+    //   return [year, month, day].join('-');
+    // },
+    datetimeToday: function() {
+      let d = new Date()
+      d = d.toISOString();
+      // d = d.slice(0,-8);
+      return d;
     }
   },
   created(){
-    this.date = this.dateToday;
+    this.date = this.datetimeToday;
+    // this.date = '2019-07-16T12:06';
       if(this.parent === 'UpdateOrder'){
         this.date = this.$store.state.newOrder.date;
         this.numberOfGuests = this.$store.state.newOrder.numberOfGuests;
@@ -114,7 +162,16 @@ export default {
   .container{
     max-width: 800px;
   }
+  #input-email, #numberOfGuests{
+    /* max-width: 250px; */
+    width: 100%;
+  
+  }
+  #form-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+  }
 
- 
 </style>
 

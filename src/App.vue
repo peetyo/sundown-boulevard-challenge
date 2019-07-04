@@ -7,12 +7,18 @@
 </template>
 <script>
 import Navigation from './components/Navigation'
-
+import { mapActions } from 'vuex';
 
 export default {
   name: 'app',
   components: {
     Navigation
+  },
+  methods:{
+    ...mapActions(['fetchOrders']),
+  },
+  created(){
+    this.fetchOrders();
   }
 }
 </script>
@@ -75,13 +81,18 @@ a.btn-primary:hover, button.btn-primary:hover{
     height: 400px;
     object-fit: cover;
 }
-/* div.container{
-  padding-left: 0;
-  padding-right: 0;
-} */
+input.form-control{
+  display:unset;
+}
+@media only screen and (max-width: 576px) {
+  h1{
+    font-size: 1.8rem !important;
+  } 
+}
 div.row{
   margin-bottom: 20px;
 }
+
 /* Global css */
 #app h1,#app h2,#app h3,#app h4,#app h5,#app h6{
   font-weight: 600;
@@ -103,5 +114,29 @@ div.row{
 .custom-card p{
   flex-grow: 1;
 }
-  
+
+/* Styling Datetime picker */
+div.vdatetime-popup__header{
+    background-color: var(--primary-color);
+}
+div.vdatetime-calendar__month__day--selected > span > span, .vdatetime-calendar__month__day--selected:hover > span > span {
+  background-color: var(--primary-color);
+}
+div.vdatetime-calendar__month__day--selected > span > span, .vdatetime-calendar__month__day--selected:hover > span > span {
+  background-color: var(--primary-color) !important;
+}
+div.vdatetime-popup__actions__button{
+  color: var(--primary-color);
+}
+div.vdatetime-time-picker__item--selected {
+    color: var(--primary-color);
+}
+#datetime-picker{
+  cursor: pointer;
+  width: 100%;
+}
+.vdatetime-time-picker__list.vdatetime-time-picker__list--minutes{
+  padding-top: 4rem;
+}
+
 </style>

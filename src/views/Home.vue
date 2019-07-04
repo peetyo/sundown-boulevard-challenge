@@ -21,8 +21,6 @@ import StartOrder from '@/components/home/StartOrder.vue'
 import FindOrder from '@/components/home/FindOrder.vue'
 import LatestNews from '@/components/home/LatestNews.vue'
 
-import { mapActions } from 'vuex';
-
 export default {
   name: 'home',
   components: {
@@ -30,12 +28,6 @@ export default {
     StartOrder,
     FindOrder,
     LatestNews
-  },
-  methods:{
-    ...mapActions(['fetchOrders']),
-  },
-  created(){
-    this.fetchOrders();
   }
 }
 </script>
