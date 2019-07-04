@@ -4,6 +4,7 @@ import store from './store';
 import Home from './views/Home.vue'
 import Order from './views/Order.vue'
 import UpdateOrder from './views/UpdateOrder.vue'
+import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
 
@@ -32,8 +33,11 @@ export default new Router({
           next('/')
         }
       }
+    },
+    {
+      path: '**',
+      name: 'NotFound',
+      component: NotFound
     }
-
-    // TODO: Add 404
   ]
 })

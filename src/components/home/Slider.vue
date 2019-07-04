@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  // import axios from 'axios';
   export default {
     name: "Slider",
     data() {
@@ -52,22 +51,6 @@
       onSlideEnd() {
         this.sliding = false
       }
-    },
-    created(){
-    //   for(let i = 0; i<3; i++){
-    //     console.log(i)
-    //     axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
-    //     .then(res => {
-    //     const dish = { ...this.dish,
-    //       id: res.data.meals[0].idMeal,
-    //       name: res.data.meals[0].strMeal,
-    //       imageUrl: res.data.meals[0].strMealThumb   
-    //     }
-    //     this.dishes.push(dish);
-    //     console.log(this.dishes)
-    //     })
-    //  .catch(err => console.log(err))
-    //     }
     }
   }
 </script>

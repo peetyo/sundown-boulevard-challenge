@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import LoadDish from '@/components/order/LoadDish.vue'
 import SelectDrinks from '@/components/order/SelectDrinks.vue'
 import SelectDate from '@/components/order/SelectDate.vue'
