@@ -63,6 +63,9 @@ export default {
 #app input{
   box-shadow:none !important;
 }
+#app a{
+  box-shadow:none !important;
+}
 #app button{
   box-shadow:none !important;
 }
@@ -91,13 +94,24 @@ a.btn-primary:hover, button.btn-primary:hover{
 input.form-control{
   display:unset;
 }
+div.row{
+  margin-bottom: 20px;
+}
 @media only screen and (max-width: 576px) {
   h1{
     font-size: 1.8rem !important;
   } 
 }
-div.row{
-  margin-bottom: 20px;
+@media (hover: none) {
+  .drink-wrapper:hover{
+    border: 2px solid lightgray;
+  }
+  .drink-wrapper:hover span.tick{
+    opacity: 0;
+  }
+  .btn.btn-primary:hover{
+    opacity: 1 !important;
+  }
 }
 
 /* Global css */
