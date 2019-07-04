@@ -9,9 +9,9 @@
               <input type="checkbox" v-bind:name="drink.id" v-bind:id="drink.id" v-bind:value="drink.id" v-model="selectedDrinksId">
               <label v-bind:for="drink.id"  >
                 <div class="drink-wrapper">
-                <div class="drink" v-bind:style="{ 'background-image': 'url(' + drink.image_url + ')' }">
+                <img v-bind:src="drink.image_url" alt="image of drink">
                 <h4>{{ drink.name }}</h4>
-                </div>
+                <span class="tick">&#10004;</span>
                 </div>
               </label>
             </div>
@@ -102,34 +102,55 @@ export default {
     grid-gap: 1rem;
   }
   .drink-wrapper {
+    position: relative;
     padding: 1rem;
-    background-color: #eee;
-    background-color: #C9C9C9;
-    border-radius: 3px;
-  }
-  .drink{
-    width: 100%;
-    height:300px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 1rem;
+    border: 2px solid lightgray;
+    transition: .3s;
     cursor: pointer;
   }
-  .drink h4{
+  .drink-wrapper:hover{
+    border-color: black;
+  }
+  .drink-wrapper img{
+    width: 100%;
+    height:300px;
+    object-fit: contain;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+ 
+  #drinks-container .drink-wrapper h4{
+    position: absolute;
+    left:1rem;
+    bottom: .5rem;
+    margin-bottom: 0;
     color: var(--primary-color);
     font-weight: 600;
-    /* background-color: #eee; */
-    background-color:rgba(250,250,250,0.7);
+    background-color:rgba(255,255,255,.7);
     padding: 5px;
-    text-align: center;
+  }
+  
+  span.tick{
+    position:absolute;
+    font-size: 3rem;
+    right: 10px;
+    top: 5px;
+    opacity: 0;
+    transition: .3s;
+    /* color: var(--primary-color); */
+  }
+  .drink-wrapper:hover span.tick{
+    opacity: .5;
+  }
+  input:checked + label .drink-wrapper span.tick{
+    opacity: 1;
+    color: var(--secondary-color);
   }
   input[type="checkbox"]{
     display: none;
   }
   input:checked + label .drink-wrapper{
-   background-color: #333;
-   background-color: var(--primary-color);
+    border-color: black;
   }
   label{
     width: 100%;
@@ -178,5 +199,13 @@ export default {
       text-align: center !important;
     }
    }
+  @media (hover: none) {
+    .drink-wrapper:hover{
+      border: 2px solid lightgray;
+    }
+    .drink-wrapper:hover span.tick{
+      opacity: 0;
+    }
+  }
 </style>
 

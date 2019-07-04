@@ -28,6 +28,9 @@ export default {
     StartOrder,
     FindOrder,
     LatestNews
+  },
+  created(){
+    window.scrollTo(0,0);
   }
 }
 </script>
