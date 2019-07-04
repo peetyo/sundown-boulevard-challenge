@@ -1,5 +1,8 @@
 <template>
-  <Order parent="UpdateOrder" ref="orderComponent"/>
+  <div>
+    <h1>Update Order</h1>
+    <Order parent="UpdateOrder" ref="orderComponent"/>
+  </div>
 </template>
 
 <script>
@@ -36,3 +39,9 @@ export default {
   }
 }
 </script>
+<style>
+  h1{
+    padding-left: 15px;
+    margin-bottom: 1rem;
+  }
+</style>

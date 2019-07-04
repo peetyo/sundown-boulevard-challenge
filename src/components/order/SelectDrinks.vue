@@ -16,14 +16,12 @@
               </label>
             </div>
           </div>
-          <!-- <div>Selected drinks {{ selectedDrinksId }}</div> -->
         </b-col>
 
         <b-col md="4">
           <div id="select-drinks" class="custom-card sticky-top">
-            <h4>Would you like a drink?</h4>
-            <p>Simply select the ones you like.</p>
-            <p>* You can order more than one.</p>
+            <h4>Choose your drinks</h4>
+            <p class="mb-4">Simply select the drinks you like and proceed to reservation details.</p>
             <div class="text-right">
               <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
             </div>
@@ -33,7 +31,7 @@
       </form>
    </b-container>
    <div id="select-drinks-mobile">
-         <h4>Would you like a drink?</h4>
+         <h4>Choose your drinks</h4>
           <div class="text-right">
             <b-button v-on:click="$emit('changeComponent', 'SelectDate')" variant="primary">Next</b-button>
           </div>

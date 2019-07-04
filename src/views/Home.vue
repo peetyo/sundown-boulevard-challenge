@@ -36,9 +36,6 @@ export default {
 </script>
 
 <style>
- .home{
-   padding-top:100px;
- }
  .home h4{
    max-width: 200px;
  }

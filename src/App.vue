@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <Navigation />
-
-    <router-view/>
+    <div style="padding-top:100px;">
+      <router-view/>
+    </div>
   </div>
 </template>
 <script>
