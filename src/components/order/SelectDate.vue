@@ -8,7 +8,16 @@
         <div id="form-container">
           <div>
             <label for="datetime-picker">Select Date and Time</label>
-            <datetime v-model="date" type="datetime" v-bind:min-datetime="datetimeToday" class="form-group" input-id ="datetime-picker" input-class="form-control" :minute-step="15" format="DDDD T"></datetime>
+            <datetime 
+              v-model="date" 
+              type="datetime" 
+              v-bind:min-datetime="datetimeToday"
+              class="form-group" 
+              input-id ="datetime-picker" 
+              input-class="form-control" 
+              :minute-step="15" 
+              format="DDDD T">
+            </datetime>
           
        
         
